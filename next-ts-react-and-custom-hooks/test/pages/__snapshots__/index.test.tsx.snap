@@ -1,0 +1,9 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Home Page should  1`] = `
+<DocumentFragment>
+  <h1>
+    hello
+  </h1>
+</DocumentFragment>
+`;
