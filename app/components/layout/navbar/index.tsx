@@ -1,8 +1,10 @@
 import * as React from "react";
 import styled from "styled-components";
+
 import useToggle from "../../../hooks/useToggle";
 import { SecondaryTitle } from "../../styled/Texts";
 import { handleFlex } from "../../styled/utils/handleFlex";
+import NavList from "./NavList";
 
 interface Props {
   className: string;
@@ -21,6 +23,7 @@ const Nav: React.FC<Props> = ({ className }) => {
         <h4>React Hooks</h4>
       </SecondaryTitle>
 
+      <NavList />
       <span id="nav-icon" onClick={toggleIsOn}>
         🍔
       </span>
