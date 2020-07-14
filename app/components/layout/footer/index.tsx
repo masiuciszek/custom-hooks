@@ -19,6 +19,7 @@ const Footer: React.FC<Props> = ({ className }) => {
     </footer>
   );
 };
+
 export default styled(Footer)`
   padding: 1rem 2rem;
   height: 15rem;

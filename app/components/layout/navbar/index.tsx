@@ -22,7 +22,6 @@ export default styled(Nav)`
   margin: 0;
   width: 100vw;
   height: 15rem;
-
   background: transparent;
   ${handleFlex("row", "space-between", "center")};
   font-size: 2rem;
