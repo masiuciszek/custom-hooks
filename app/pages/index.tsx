@@ -1,6 +1,11 @@
-import { NextPage } from "next";
+import { GetServerSideProps, GetServerSidePropsContext, NextPage } from "next";
+import { ParsedUrlQuery } from "querystring";
 
-const IndexPage: NextPage = () => {
+interface Props {
+  data: any;
+}
+
+const IndexPage: NextPage<Props> = ({ data }) => {
   return (
     <h1>
       Lorem ipsum dolor, sit amet consectetur adipisicing elit. Molestiae
@@ -90,6 +95,22 @@ const IndexPage: NextPage = () => {
       pariatur impedit sint. Voluptatibus modi veritatis vel!
     </h1>
   );
+};
+
+export const getServersideProps: GetServerSideProps = async (
+  ctx: GetServerSidePropsContext<ParsedUrlQuery>
+) => {
+  if (!ctx.req) {
+    return;
+  }
+  const startFetch = await fetch("http://localhost:3000/api/site/links");
+  const resData = await startFetch.json();
+
+  return {
+    props: {
+      data: resData,
+    },
+  };
 };
 
 export default IndexPage;

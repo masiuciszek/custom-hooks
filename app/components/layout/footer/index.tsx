@@ -2,6 +2,7 @@ import * as React from "react";
 import styled from "styled-components";
 import { SecondaryTitle } from "../../styled/Texts";
 import { handleFlex } from "../../styled/utils/handleFlex";
+import { FooterListWrapper } from "./Footer.styles";
 
 interface Props {
   className: string;
@@ -13,6 +14,8 @@ const Footer: React.FC<Props> = ({ className }) => {
       <SecondaryTitle>
         <h4>React Hooks</h4>
       </SecondaryTitle>
+
+      <FooterListWrapper></FooterListWrapper>
     </footer>
   );
 };

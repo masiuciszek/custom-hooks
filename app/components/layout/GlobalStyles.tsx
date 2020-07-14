@@ -21,10 +21,6 @@ export default createGlobalStyle`
       margin: 0;
       line-height: 2;
       font-size: ${(props) => props.theme.size.appSize};
-
-      /* min-height: 100vh; */
-      /* background: ${({ theme: { colors } }) => colors.primary};
-      color: ${({ theme: { colors } }) => colors.text}; */
     }
 
     ul{
