@@ -95,7 +95,7 @@ So basically a hook withe help of another hook 💪🏻.
 
 ``` tsx
 
-  import * as React from "react";
+import * as React from "react";
 import useToggle from "./useToggle";
 
 type ReturnHoveredHookType = [boolean, BindType];

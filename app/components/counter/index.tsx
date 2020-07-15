@@ -7,10 +7,16 @@ const Counter: React.FC<Props> = () => {
 
   return (
     <div>
-      <h1>{count}</h1>
-      <button onClick={increment}>add</button>
-      <button onClick={decrement}>dec</button>
-      <button onClick={reset}>reset</button>
+      <h1 data-testid="h1">{count}</h1>
+      <button onClick={increment} data-testid="add">
+        add
+      </button>
+      <button onClick={decrement} data-testid="dec">
+        dec
+      </button>
+      <button onClick={reset} data-testid="reset">
+        reset
+      </button>
     </div>
   );
 };

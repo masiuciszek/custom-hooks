@@ -9,7 +9,6 @@ interface Props {}
 const NavList: React.FC<Props> = () => {
   const { navData } = useSiteState();
   const router = useRouter();
-  console.log(router.pathname);
 
   return (
     <NavListStyles>
@@ -19,7 +18,9 @@ const NavList: React.FC<Props> = () => {
             key={navItem.text}
             style={{
               borderBottom:
-                router.pathname === navItem.path ? "2px solid #0277BD" : "none",
+                router && router.pathname === navItem.path
+                  ? "2px solid #0277BD"
+                  : "none",
             }}
           >
             <Link href={navItem.path}>

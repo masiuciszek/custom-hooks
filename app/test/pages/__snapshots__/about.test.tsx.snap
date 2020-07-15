@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`Home Page should Match Snapshot  1`] = `
+exports[`Home Page should match Snapshot  1`] = `
 <DocumentFragment>
   <nav
     class="navbar-sc-8gcs5t-0 edATjb main-navbar"
@@ -14,22 +14,7 @@ exports[`Home Page should Match Snapshot  1`] = `
     </div>
     <ul
       class="NavStyles__NavListStyles-q0dme3-0 hwCehv"
-    >
-      <li>
-        <a
-          href="/"
-        >
-          Home
-        </a>
-      </li>
-      <li>
-        <a
-          href="/about"
-        >
-          About
-        </a>
-      </li>
-    </ul>
+    />
     <span
       id="nav-icon"
     >
@@ -43,7 +28,7 @@ exports[`Home Page should Match Snapshot  1`] = `
       class="layout__Main-sc-1lvij4u-1 kweqBy"
     >
       <section
-        class="title-sc-2igzia-0 cFwbxr Home-Title"
+        class="title-sc-2igzia-0 cFwbxr About-Title"
       >
         <h1>
           React Hooks
@@ -66,6 +51,28 @@ exports[`Home Page should Match Snapshot  1`] = `
           </span>
         </h3>
       </section>
+      <div>
+        <h1
+          data-testid="h1"
+        >
+          0
+        </h1>
+        <button
+          data-testid="add"
+        >
+          add
+        </button>
+        <button
+          data-testid="dec"
+        >
+          dec
+        </button>
+        <button
+          data-testid="reset"
+        >
+          reset
+        </button>
+      </div>
     </main>
   </div>
   <footer
