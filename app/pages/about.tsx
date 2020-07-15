@@ -1,4 +1,7 @@
+import { NextPage } from "next";
+import Counter from "../components/counter";
 import Title from "../components/title";
+
 interface Props {}
 
 const IndexPage: NextPage<Props> = () => {
@@ -9,6 +12,7 @@ const IndexPage: NextPage<Props> = () => {
         mainTitle="React Hooks"
         secondaryTitle="React hooks with Marcell"
       />
+      <Counter />
     </>
   );
 };

@@ -7,3 +7,5 @@ interface ApiResponse<T> {
   msg: string;
   data?: Array<T>;
 }
+
+type Fn = () => void;
