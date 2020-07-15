@@ -9,3 +9,8 @@ interface ApiResponse<T> {
 }
 
 type Fn = () => void;
+
+type BindType = {
+  onMouseOver: Fn;
+  onMouseLeave: Fn;
+};

@@ -87,3 +87,30 @@ export const useUnmount = (fn: FnTypeHook): void => {
 };
 
 ```
+
+### useHoverHook 🐙
+
+In this example we are using the use toggle hook to toggle our **boolean**.
+So basically a hook withe help of another hook 💪🏻.
+
+``` tsx
+
+  import * as React from "react";
+import useToggle from "./useToggle";
+
+type ReturnHoveredHookType = [boolean, BindType];
+
+export default (): ReturnHoveredHookType => {
+  // const [isHovered, setIsHovered] = React.useState(false);
+  const [isHovered, toggle] = useToggle();
+  const bind = React.useMemo(() => {
+    return {
+      onMouseOver: () => toggle(),
+      onMouseLeave: () => toggle(),
+    };
+  }, []);
+
+  return [isHovered, bind];
+};
+
+```
