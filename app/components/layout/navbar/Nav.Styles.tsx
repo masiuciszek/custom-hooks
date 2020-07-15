@@ -7,6 +7,10 @@ export const NavListStyles = styled.ul`
   margin-right: 3rem;
   li {
     padding: 1rem;
+    transform: ${({ theme }) => theme.transition.mainTransition};
+    &:hover {
+      border-bottom: none !important;
+    }
   }
   a {
     color: ${({ theme }) => theme.colors.text};
