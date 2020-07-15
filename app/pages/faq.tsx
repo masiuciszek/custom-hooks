@@ -1,20 +1,20 @@
 import { NextPage } from "next";
-import Counter from "../components/counter";
+import Hover from "../components/hover";
 import Title from "../components/title";
 
 interface Props {}
 
-const AboutPage: NextPage<Props> = () => {
+const FaqPage: NextPage<Props> = () => {
   return (
     <>
       <Title
-        className="About-Title"
+        className="Faq-Title"
         mainTitle="React Hooks"
         secondaryTitle="React hooks with Marcell"
       />
-      <Counter />
+      <Hover />
     </>
   );
 };
 
-export default AboutPage;
+export default FaqPage;

@@ -3,7 +3,7 @@ import useCount from "../../hooks/useCount";
 interface Props {}
 
 const Counter: React.FC<Props> = () => {
-  const { count, increment, decrement, reset } = useCount(0);
+  const { count, increment, decrement, reset } = useCount(0, 5, 0);
 
   return (
     <div>
