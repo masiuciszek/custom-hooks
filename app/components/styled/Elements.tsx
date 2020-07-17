@@ -13,6 +13,5 @@ export const ImgCardWrapperStyles = styled.div`
 export const SimpleWrapper = styled.div`
   ${handleFlex("column", "center", "center")};
   padding: 2rem 1rem;
-  /* TODO: REMOVE ? */
-  border: 2px solid #333;
+  margin: 2rem auto;
 `;

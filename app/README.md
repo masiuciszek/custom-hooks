@@ -5,19 +5,18 @@ If there is any you like , just use them I am just glad they com ein handy! 😎
 
 ### Tools dor this project 🛠🔧
 
-* Next JS 💥
-* Typescript ʦ
-* Jest 🃏
-* React-testing-library 🐙
-* React-testing-library/hooks 🛠
+- Next JS 💥
+- Typescript ʦ
+- Jest 🃏
+- React-testing-library 🐙
+- React-testing-library/hooks 🛠
 
 <hr/>
 
 ### useToggle hook 🔛👮‍♀️
 
-``` tsx
-
-  import * as React from "react";
+```tsx
+import * as React from "react";
 
 type ToggleReturnType = [boolean, () => void];
 
@@ -30,14 +29,13 @@ export default (initialState = false): ToggleReturnType => {
 
   return [state, toggle];
 };
-
 ```
 
 <hr/>
 
 ### UseCount hook ⏱
 
-``` tsx
+```tsx
 import * as React from "react";
 
 type CountReturnType = {
@@ -68,15 +66,14 @@ export default (
 
   return { count, increment, decrement, reset };
 };
-
 ```
 
 <hr/>
 
 ### UseMount hooks 🪓⚛️
 
-``` tsx
-  import { useEffect } from "react";
+```tsx
+import { useEffect } from "react";
 
 type FnTypeHook = Fn | AnotherFN | SecondFn | ThirdFN;
 
@@ -92,7 +89,6 @@ export const useUnmount = (fn: FnTypeHook): void => {
     };
   });
 };
-
 ```
 
 <hr/>
@@ -102,8 +98,7 @@ export const useUnmount = (fn: FnTypeHook): void => {
 In this example we are using the use toggle hook to toggle our **boolean**.
 So basically a hook withe help of another hook 💪🏻.
 
-``` tsx
-
+```tsx
 import * as React from "react";
 import useToggle from "./useToggle";
 
@@ -121,7 +116,6 @@ export default (): ReturnHoveredHookType => {
 
   return [isHovered, bind];
 };
-
 ```
 
 <hr/>
@@ -130,8 +124,8 @@ export default (): ReturnHoveredHookType => {
 
 This example can very, depending on how you prefer to structure your context API code.
 
-``` tsx
-  export const useSiteState = () => {
+```tsx
+export const useSiteState = () => {
   const context = React.useContext(SiteStateContext);
   if (context === undefined) {
     throw new Error("useSiteState must be wrapped with in a provider");
@@ -146,5 +140,29 @@ export const useSiteDispatch = () => {
   }
   return context;
 };
+```
 
+<br/>
+
+### useCookie hook 🍪
+
+```tsx
+import * as React from "react";
+import Cookies from "js-cookie";
+
+type UseCookieReturnType = [
+  string,
+  React.Dispatch<React.SetStateAction<string>>
+];
+
+export const useCookie = ({ key }): UseCookieReturnType => {
+  const initialCookie = Cookies.get(key);
+  const [cookie, setStateCookie] = React.useState<string>(initialCookie);
+
+  React.useEffect(() => {
+    Cookies.set(key, cookie);
+  }, [cookie, key]);
+
+  return [cookie, setStateCookie];
+};
 ```
