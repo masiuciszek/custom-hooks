@@ -155,7 +155,11 @@ type UseCookieReturnType = [
   React.Dispatch<React.SetStateAction<string>>
 ];
 
-export const useCookie = ({ key }): UseCookieReturnType => {
+interface Key {
+  key: string;
+}
+
+export const useCookie = ({ key }: Key): UseCookieReturnType => {
   const initialCookie = Cookies.get(key);
   const [cookie, setStateCookie] = React.useState<string>(initialCookie);
 
@@ -164,5 +168,25 @@ export const useCookie = ({ key }): UseCookieReturnType => {
   }, [cookie, key]);
 
   return [cookie, setStateCookie];
+};
+```
+
+### useScrollFreeze hook 🥶
+
+useful when you want to prevent the user from scrolling the page, foe example when a modal is switched to true (open).
+
+```tsx
+import * as React from "react";
+
+export default () => {
+  React.useLayoutEffect(() => {
+    const original = window.getComputedStyle(document.body).overflow;
+    document.body.style.overflow = "hidden";
+    // Cleanup
+    // runs when component ore the hook is unmounted
+    return () => {
+      document.body.style.overflow = original;
+    };
+  }, []);
 };
 ```

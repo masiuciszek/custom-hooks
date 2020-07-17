@@ -4,6 +4,7 @@ import {
   useSiteDispatch,
   useSiteState,
 } from "../../../context/site.context/Site.context";
+import useScrollFreeze from "../../../hooks/useScrollFreeze";
 import { SecondaryTitle } from "../../styled/Texts";
 import { handleFlex } from "../../styled/utils/handleFlex";
 import NavList from "./NavList";
@@ -16,6 +17,10 @@ interface Props {
 const Nav: React.FC<Props> = ({ className }) => {
   const dispatch = useSiteDispatch();
   const { isNavOpen } = useSiteState();
+
+  if (isNavOpen) {
+    useScrollFreeze();
+  }
 
   return (
     <nav className={className}>

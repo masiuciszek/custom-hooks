@@ -6,7 +6,11 @@ type UseCookieReturnType = [
   React.Dispatch<React.SetStateAction<string>>
 ];
 
-export const useCookie = ({ key }): UseCookieReturnType => {
+interface Key {
+  key: string;
+}
+
+export const useCookie = ({ key }: Key): UseCookieReturnType => {
   const initialCookie = Cookies.get(key);
   const [cookie, setStateCookie] = React.useState<string>(initialCookie);
 
