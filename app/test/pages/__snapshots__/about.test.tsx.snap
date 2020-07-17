@@ -13,7 +13,11 @@ exports[`Home Page should match Snapshot  1`] = `
       </h4>
     </div>
     <ul
-      class="NavStyles__NavListStyles-q0dme3-0 NavStyles__SmallListStyle-q0dme3-1 gDsayG"
+      class="NavStyles__NavListStyles-q0dme3-0 hwCehv"
+    />
+    <ul
+      class="NavStyles__NavListStyles-q0dme3-0 NavStyles__SmallListStyle-q0dme3-1 iqKrxM"
+      style="transform: translateY(-1000%);"
     >
       <li>
         <a
@@ -37,9 +41,6 @@ exports[`Home Page should match Snapshot  1`] = `
         </a>
       </li>
     </ul>
-    <ul
-      class="NavStyles__NavListStyles-q0dme3-0 hwCehv"
-    />
     <span
       id="nav-icon"
     >
