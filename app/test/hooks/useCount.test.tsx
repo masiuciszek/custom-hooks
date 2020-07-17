@@ -1,7 +1,7 @@
 import { renderHook, act } from "@testing-library/react-hooks";
 import useCount from "../../hooks/useCount";
 
-describe("Name of the group", () => {
+describe("useCount", () => {
   test("should increment counter", () => {
     const { result } = renderHook(() => useCount());
 
