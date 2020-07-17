@@ -13,6 +13,31 @@ exports[`Home Page should match Snapshot  1`] = `
       </h4>
     </div>
     <ul
+      class="NavStyles__NavListStyles-q0dme3-0 NavStyles__SmallListStyle-q0dme3-1 gDsayG"
+    >
+      <li>
+        <a
+          href="/"
+        >
+          Home
+        </a>
+      </li>
+      <li>
+        <a
+          href="/about"
+        >
+          About 
+        </a>
+      </li>
+      <li>
+        <a
+          href="/faq"
+        >
+          Faq
+        </a>
+      </li>
+    </ul>
+    <ul
       class="NavStyles__NavListStyles-q0dme3-0 hwCehv"
     />
     <span

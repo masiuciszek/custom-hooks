@@ -9,7 +9,7 @@ const Hover: React.FC<Props> = () => {
 
   return (
     <SimpleWrapper>
-      {images.map((img, i) => (
+      {images.map((img) => (
         <Card key={img} />
       ))}
     </SimpleWrapper>

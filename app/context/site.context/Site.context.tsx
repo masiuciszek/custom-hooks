@@ -1,17 +1,10 @@
 import * as React from "react";
+import { State, initialState, Dispatch } from "./Site.types";
 import SiteReducer from "./Site.reducer";
-
-export type Action = { type: "SET_NAV_DATA"; payload: NavLink[] };
-type Dispatch = (action: Action) => void;
-export type State = { navData: NavLink[] };
 
 interface Props {
   children: React.ReactNode;
 }
-
-const initialState: State = {
-  navData: [],
-};
 
 const SiteStateContext = React.createContext<State | undefined>(undefined);
 const SiteDispatchContext = React.createContext<Dispatch | undefined>(
@@ -36,6 +29,7 @@ export const useSiteState = () => {
   }
   return context;
 };
+
 export const useSiteDispatch = () => {
   const context = React.useContext(SiteDispatchContext);
   if (context === undefined) {

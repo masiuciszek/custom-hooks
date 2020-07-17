@@ -4,10 +4,10 @@ import SiteProvider from "../context/site.context/Site.context";
 
 export default function MyApp({ Component, pageProps }: AppProps) {
   return (
-    <Layout>
-      <SiteProvider>
+    <SiteProvider>
+      <Layout>
         <Component {...pageProps} />
-      </SiteProvider>
-    </Layout>
+      </Layout>
+    </SiteProvider>
   );
 }

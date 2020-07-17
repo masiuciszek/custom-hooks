@@ -1,16 +1,21 @@
 import * as React from "react";
 import styled from "styled-components";
-import useToggle from "../../../hooks/useToggle";
+import {
+  useSiteDispatch,
+  useSiteState,
+} from "../../../context/site.context/Site.context";
 import { SecondaryTitle } from "../../styled/Texts";
 import { handleFlex } from "../../styled/utils/handleFlex";
 import NavList from "./NavList";
+import SmallList from "./SmallList";
 
 interface Props {
   className: string;
 }
 
 const Nav: React.FC<Props> = ({ className }) => {
-  const [isOn, toggleIsOn] = useToggle(false);
+  const dispatch = useSiteDispatch();
+  const { isNavOpen } = useSiteState();
 
   return (
     <nav className={className}>
@@ -19,9 +24,9 @@ const Nav: React.FC<Props> = ({ className }) => {
       </SecondaryTitle>
 
       <NavList />
-      {isOn && <h1>Here comes the mobile Menu</h1>}
+      <SmallList />
 
-      <span id="nav-icon" onClick={toggleIsOn}>
+      <span id="nav-icon" onClick={() => dispatch({ type: "TOGGLE_NAV" })}>
         🍔
       </span>
     </nav>

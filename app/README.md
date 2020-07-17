@@ -9,6 +9,9 @@ If there is any you like , just use them I am just glad they com ein handy! 😎
 * Typescript ʦ
 * Jest 🃏
 * React-testing-library 🐙
+* React-testing-library/hooks 🛠
+
+<hr/>
 
 ### useToggle hook 🔛👮‍♀️
 
@@ -29,6 +32,8 @@ export default (initialState = false): ToggleReturnType => {
 };
 
 ```
+
+<hr/>
 
 ### UseCount hook ⏱
 
@@ -66,6 +71,8 @@ export default (
 
 ```
 
+<hr/>
+
 ### UseMount hooks 🪓⚛️
 
 ``` tsx
@@ -87,6 +94,8 @@ export const useUnmount = (fn: FnTypeHook): void => {
 };
 
 ```
+
+<hr/>
 
 ### useHoverHook 🐙
 
@@ -111,6 +120,31 @@ export default (): ReturnHoveredHookType => {
   }, []);
 
   return [isHovered, bind];
+};
+
+```
+
+<hr/>
+
+### useContext hooks both for state and your reducer 🦄
+
+This example can very, depending on how you prefer to structure your context API code.
+
+``` tsx
+  export const useSiteState = () => {
+  const context = React.useContext(SiteStateContext);
+  if (context === undefined) {
+    throw new Error("useSiteState must be wrapped with in a provider");
+  }
+  return context;
+};
+
+export const useSiteDispatch = () => {
+  const context = React.useContext(SiteDispatchContext);
+  if (context === undefined) {
+    throw new Error("useSiteDispatch must be wrapped with in a provider");
+  }
+  return context;
 };
 
 ```
