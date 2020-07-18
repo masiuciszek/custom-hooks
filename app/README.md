@@ -5,17 +5,17 @@ If there is any you like , just use them I am just glad they com ein handy! 😎
 
 ### Tools dor this project 🛠🔧
 
-* Next JS 💥
-* Typescript ʦ
-* Jest 🃏
-* React-testing-library 🐙
-* React-testing-library/hooks 🛠
+- Next JS 💥
+- Typescript ʦ
+- Jest 🃏
+- React-testing-library 🐙
+- React-testing-library/hooks 🛠
 
 <hr/>
 
 ### useToggle hook 🔛👮‍♀️
 
-``` tsx
+```tsx
 import * as React from "react";
 
 type ToggleReturnType = [boolean, () => void];
@@ -35,7 +35,7 @@ export default (initialState = false): ToggleReturnType => {
 
 ### UseCount hook ⏱
 
-``` tsx
+```tsx
 import * as React from "react";
 
 type CountReturnType = {
@@ -72,7 +72,7 @@ export default (
 
 ### UseMount hooks 🪓⚛️
 
-``` tsx
+```tsx
 import { useEffect } from "react";
 
 type FnTypeHook = Fn | AnotherFN | SecondFn | ThirdFN;
@@ -98,7 +98,7 @@ export const useUnmount = (fn: FnTypeHook): void => {
 In this example we are using the use toggle hook to toggle our **boolean**.
 So basically a hook withe help of another hook 💪🏻.
 
-``` tsx
+```tsx
 import * as React from "react";
 import useToggle from "./useToggle";
 
@@ -124,7 +124,7 @@ export default (): ReturnHoveredHookType => {
 
 This example can very, depending on how you prefer to structure your context API code.
 
-``` tsx
+```tsx
 export const useSiteState = () => {
   const context = React.useContext(SiteStateContext);
   if (context === undefined) {
@@ -146,7 +146,7 @@ export const useSiteDispatch = () => {
 
 ### useCookie hook 🍪
 
-``` tsx
+```tsx
 import * as React from "react";
 import Cookies from "js-cookie";
 
@@ -175,7 +175,7 @@ export const useCookie = ({ key }: Key): UseCookieReturnType => {
 
 useful when you want to prevent the user from scrolling the page, foe example when a modal is switched to true (open).
 
-``` tsx
+```tsx
 import * as React from "react";
 
 export default () => {
@@ -195,8 +195,7 @@ export default () => {
 
 ### useWindowWidth 🔥
 
-``` tsx
-
+```tsx
 import * as React from "react";
 
 const useWindowWidth = (): number => {
@@ -217,5 +216,53 @@ const useWindowWidth = (): number => {
 };
 
 export default useWindowWidth;
+```
 
+<br />
+
+### useMeasure hook 🤗🐶
+
+Here I using a polyfill , what I actually recommend.
+ResizeObserver is still not fully supported in all browsers
+
+This hook is great for measure all different kind of a specific element.
+
+```tsx
+import * as React from "react";
+import ResizeObserver from "resize-observer-polyfill";
+
+interface Bound {
+  left: number;
+  top: number;
+  width: number;
+  height: number;
+}
+
+const useMeasure = () => {
+  const ref = React.useRef();
+
+  const [bounds, setBounds] = React.useState<Bound>({
+    left: 0,
+    top: 0,
+    width: 0,
+    height: 0,
+  });
+
+  const [resizeX] = React.useState(() => {
+    return new ResizeObserver(([entry]) => setBounds(entry.contentRect));
+  });
+
+  React.useEffect(() => {
+    if (ref.current) {
+      resizeX.observe(ref.current);
+    }
+    return () => {
+      return resizeX.disconnect();
+    };
+  }, [resizeX]);
+
+  return [{ ref }, bounds];
+};
+
+export default useMeasure;
 ```

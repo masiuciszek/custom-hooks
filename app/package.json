@@ -13,12 +13,6 @@
     "test": "jest",
     "test-all": "yarn lint && yarn type-check && yarn test"
   },
-  "husky": {
-    "hooks": {
-      "pre-commit": "lint-staged",
-      "pre-push": "yarn run type-check"
-    }
-  },
   "lint-staged": {
     "*.@(ts|tsx)": [
       "yarn lint",
@@ -30,6 +24,7 @@
     "next": "^9.4.4",
     "react": "^16.13.1",
     "react-dom": "^16.13.1",
+    "resize-observer-polyfill": "^1.5.1",
     "styled-components": "^5.1.1"
   },
   "devDependencies": {
