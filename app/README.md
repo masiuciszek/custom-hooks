@@ -3,6 +3,8 @@
 This is application is a code example of how you can build your own custom hooks with React and reuse them in your applications.
 If there is any you like , just use them I am just glad they com ein handy! 😎😃🤗
 
+## Big Thanks to Scott Tolinski from Level Up Tutorials and Egghead.io for all knowledge
+
 ### Tools dor this project 🛠🔧
 
 - Next JS 💥
@@ -265,4 +267,80 @@ const useMeasure = () => {
 };
 
 export default useMeasure;
+```
+
+<br/>
+
+### useScript hook 𝒮👩🏻‍💻
+
+This hook i useful for when you want need to load a script into your project, for example a recaptcha from google's API
+
+```tsx
+import * as React from "react";
+
+interface Status {
+  loaded: boolean;
+  error: boolean;
+}
+
+type UseScriptReturn = [boolean, boolean];
+
+const useScript = (src: string): UseScriptReturn => {
+  const cached = [];
+
+  const [status, setStatus] = React.useState<Status>({
+    loaded: false,
+    error: false,
+  });
+
+  React.useEffect(() => {
+    // if script already exits then ....
+    if (cached.includes(src)) {
+      setStatus({
+        loaded: true,
+        error: false,
+      });
+    } else {
+      cached.push(src);
+
+      const script = document.createElement("script");
+      script.src = src;
+      // for not blocking
+      script.async = true;
+
+      const onLoad = () => {
+        setStatus({
+          loaded: true,
+          error: false,
+        });
+      };
+
+      const onError = () => {
+        const srcIndex = cached.indexOf(src);
+        if (srcIndex >= 0) {
+          cached.splice(srcIndex, 1);
+        }
+
+        // destroy
+        script.remove();
+        setStatus({
+          loaded: true,
+          error: true,
+        });
+      };
+      script.addEventListener("load", onLoad);
+      script.addEventListener("error", onError);
+
+      document.body.appendChild(script);
+      return () => {
+        script.removeEventListener("load", onLoad);
+        script.removeEventListener("error", onError);
+      };
+    }
+  }, [src]);
+
+  return [status.loaded, status.error];
+};
+
+export default useScript;
 ```
