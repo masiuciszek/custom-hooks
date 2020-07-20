@@ -7,17 +7,17 @@ If there is any you like , just use them I am just glad they com ein handy! 😎
 
 ### Tools dor this project 🛠🔧
 
-- Next JS 💥
-- Typescript ʦ
-- Jest 🃏
-- React-testing-library 🐙
-- React-testing-library/hooks 🛠
+* Next JS 💥
+* Typescript ʦ
+* Jest 🃏
+* React-testing-library 🐙
+* React-testing-library/hooks 🛠
 
 <hr/>
 
 ### useToggle hook 🔛👮‍♀️
 
-```tsx
+``` tsx
 import * as React from "react";
 
 type ToggleReturnType = [boolean, () => void];
@@ -37,7 +37,7 @@ export default (initialState = false): ToggleReturnType => {
 
 ### UseCount hook ⏱
 
-```tsx
+``` tsx
 import * as React from "react";
 
 type CountReturnType = {
@@ -74,7 +74,7 @@ export default (
 
 ### UseMount hooks 🪓⚛️
 
-```tsx
+``` tsx
 import { useEffect } from "react";
 
 type FnTypeHook = Fn | AnotherFN | SecondFn | ThirdFN;
@@ -100,7 +100,7 @@ export const useUnmount = (fn: FnTypeHook): void => {
 In this example we are using the use toggle hook to toggle our **boolean**.
 So basically a hook withe help of another hook 💪🏻.
 
-```tsx
+``` tsx
 import * as React from "react";
 import useToggle from "./useToggle";
 
@@ -126,7 +126,7 @@ export default (): ReturnHoveredHookType => {
 
 This example can very, depending on how you prefer to structure your context API code.
 
-```tsx
+``` tsx
 export const useSiteState = () => {
   const context = React.useContext(SiteStateContext);
   if (context === undefined) {
@@ -148,7 +148,7 @@ export const useSiteDispatch = () => {
 
 ### useCookie hook 🍪
 
-```tsx
+``` tsx
 import * as React from "react";
 import Cookies from "js-cookie";
 
@@ -177,7 +177,7 @@ export const useCookie = ({ key }: Key): UseCookieReturnType => {
 
 useful when you want to prevent the user from scrolling the page, foe example when a modal is switched to true (open).
 
-```tsx
+``` tsx
 import * as React from "react";
 
 export default () => {
@@ -197,7 +197,7 @@ export default () => {
 
 ### useWindowWidth 🔥
 
-```tsx
+``` tsx
 import * as React from "react";
 
 const useWindowWidth = (): number => {
@@ -229,7 +229,7 @@ ResizeObserver is still not fully supported in all browsers
 
 This hook is great for measure all different kind of a specific element.
 
-```tsx
+``` tsx
 import * as React from "react";
 import ResizeObserver from "resize-observer-polyfill";
 
@@ -275,7 +275,7 @@ export default useMeasure;
 
 This hook i useful for when you want need to load a script into your project, for example a recaptcha from google's API
 
-```tsx
+``` tsx
 import * as React from "react";
 
 interface Status {
@@ -343,4 +343,107 @@ const useScript = (src: string): UseScriptReturn => {
 };
 
 export default useScript;
+```
+
+<br/>
+
+### useKeyEvent hook ⚓️
+
+This hook really is a very handy hook when you working with keyboard inputs , really helped me a lot when i built a hangman game with react.
+
+``` tsx
+import * as React from "react";
+
+const useKeyEvent = () => {
+  const [letter, setLetter] = React.useState<string>("");
+
+  const handleKeyEvent = (event: KeyboardEvent) => {
+    if (event.keyCode >= 65 && event.keyCode <= 90) {
+      setLetter(event.key);
+    }
+  };
+
+  React.useEffect(() => {
+    window.addEventListener("keydown", handleKeyEvent);
+
+    return () => {
+      window.removeEventListener("keydown", handleKeyEvent);
+    };
+  });
+
+  return letter;
+};
+
+export default useKeyEvent;
+
+```
+
+<br/>
+
+### useKeyLetterCodes 👩🏻‍💻✍🏻
+
+This is hook is similar to the useKeyEvent hook but also returns the keycode end code
+
+``` tsx
+import * as React from "react";
+
+const useKeyLetterCodes = () => {
+  const [letter, setLetter] = React.useState<string>("");
+  const [keyCode, setKeyCode] = React.useState<number>(0);
+  const [code, setCode] = React.useState<string>("");
+
+  const handleKeyEvent = (event: KeyboardEvent) => {
+    if (event.keyCode >= 65 && event.keyCode <= 90) {
+      setLetter(event.key);
+      setKeyCode(event.keyCode);
+      setCode(event.code);
+    }
+  };
+
+  React.useEffect(() => {
+    window.addEventListener("keydown", handleKeyEvent);
+
+    return () => {
+      window.removeEventListener("keydown", handleKeyEvent);
+    };
+  });
+
+  return [letter, keyCode, code];
+};
+
+export default useKeyLetterCodes;
+
+```
+
+<br/>
+
+### useLocalStorage hook 🏬
+
+If you using server side rendered code with react for example Next Js , then it could be a good idea to start the hook with
+
+``` js
+  const item = typeof window === "object" ? window.localStorage.getItem(key) : null;
+```
+
+``` tsx
+import * as React from "react";
+
+function useLocalStorage(key: string, initialValue: string) {
+  const item =
+    typeof window === "object" ? window.localStorage.getItem(key) : null;
+  const [value, setValue] = React.useState<string>(item || initialValue);
+
+  React.useEffect(() => {
+    if (!item) {
+      setValue(initialValue);
+    }
+
+    window.localStorage.setItem(key, value);
+  }, [value, key]);
+
+  return [value, setValue];
+}
+
+export default useLocalStorage;
+
 ```
