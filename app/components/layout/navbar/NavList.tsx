@@ -1,6 +1,6 @@
 import * as React from "react";
 import { useSiteState } from "../../../context/site.context/Site.context";
-import { NavListStyles } from "./Nav.Styles";
+import { ListItem, NavListStyles } from "./Nav.Styles";
 import Link from "next/link";
 import { useRouter } from "next/router";
 
@@ -14,19 +14,18 @@ const NavList: React.FC<Props> = () => {
     <NavListStyles>
       {navData &&
         navData.map((navItem) => (
-          <li
+          <ListItem
             key={navItem.text}
+            isPath={router.pathname === navItem.path}
             style={{
-              borderBottom:
-                router && router.pathname === navItem.path
-                  ? "2px solid #0277BD"
-                  : "none",
+              fontSize:
+                router && router.pathname === navItem.path ? "2rem" : "1.8rem",
             }}
           >
             <Link href={navItem.path}>
               <a>{navItem.text}</a>
             </Link>
-          </li>
+          </ListItem>
         ))}
     </NavListStyles>
   );

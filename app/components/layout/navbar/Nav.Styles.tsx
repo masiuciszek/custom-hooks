@@ -1,18 +1,16 @@
 import styled from "styled-components";
 import { handleFlex } from "../../styled/utils/handleFlex";
 
+interface Props {
+  isPath: boolean;
+}
+
 export const NavListStyles = styled.ul`
   ${handleFlex("row", "center", "center")};
 
   padding: 1rem 2rem;
   margin-right: 3rem;
-  li {
-    padding: 1rem;
-    transform: ${({ theme }) => theme.transition.mainTransition};
-    &:hover {
-      border-bottom: none !important;
-    }
-  }
+
   a {
     color: ${({ theme }) => theme.colors.text};
     text-transform: capitalize;
@@ -38,6 +36,16 @@ export const NavListStyles = styled.ul`
       }
     }
   }
+`;
+
+export const ListItem = styled.li<Props>`
+  padding: 1rem;
+  transform: ${({ theme }) => theme.transition.mainTransition};
+  &:hover {
+    border-bottom: none !important;
+  }
+  ${(props) =>
+    props.isPath ? `border-bottom:${props.theme.colors.text} 2px solid` : null};
 `;
 
 export const SmallListStyle = styled(NavListStyles)`

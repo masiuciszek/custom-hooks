@@ -38,7 +38,7 @@ const secondaryTheme: DefaultTheme = {
   colors: {
     text: "#fff",
     primary: "#333",
-    btnBg: "#0277BD",
+    btnBg: "rgba(142,36,170,1)",
     btnText: "#fff",
     shadow1: "rgba(33,33,33,.8)",
     shadow2: "rgba(33,33,33,.4)",

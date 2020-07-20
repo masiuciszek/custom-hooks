@@ -13,6 +13,11 @@ export default (state: State = initialState, action: Action) => {
         ...state,
         isNavOpen: !state.isNavOpen,
       };
+    case "SET_THEME":
+      return {
+        ...state,
+        theme: action.payload,
+      };
 
     default: {
       throw new Error(`Unable Action Type`);

@@ -1,9 +1,10 @@
 import * as React from "react";
 import styled, { ThemeProvider } from "styled-components";
-import { mainTheme } from "../../utils/theme";
+import { mainTheme, secondaryTheme } from "../../utils/theme";
 import GlobalStyles from "./GlobalStyles";
 import Nav from "./navbar";
 import Footer from "./footer";
+import { useSiteState } from "../../context/site.context/Site.context";
 
 export const Page = styled.div`
   background-color: ${(props) => props.theme.colors.primary};
@@ -20,8 +21,9 @@ interface Props {
 }
 
 const Layout: React.FC<Props> = ({ children }) => {
+  const { theme } = useSiteState();
   return (
-    <ThemeProvider theme={mainTheme}>
+    <ThemeProvider theme={theme === "light" ? mainTheme : secondaryTheme}>
       <GlobalStyles />
       <Nav className="main-navbar" />
       <Page>

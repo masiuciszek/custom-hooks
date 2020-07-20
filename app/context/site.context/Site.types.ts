@@ -4,12 +4,18 @@ export enum ActionTypes {
 }
 
 export type Dispatch = (action: Action) => void;
+type ThemeType = "light" | "dark";
 
-export type State = { navData: NavLink[]; isNavOpen: boolean };
+export type State = {
+  navData: NavLink[];
+  isNavOpen: boolean;
+  theme: ThemeType;
+};
 
 export const initialState: State = {
   navData: [],
   isNavOpen: false,
+  theme: "light",
 };
 
 interface SetNavDataAction {
@@ -20,5 +26,9 @@ interface SetNavDataAction {
 interface ToggleNav {
   type: "TOGGLE_NAV";
 }
+interface SetTheme {
+  type: "SET_THEME";
+  payload: string;
+}
 
-export type Action = SetNavDataAction | ToggleNav;
+export type Action = SetNavDataAction | ToggleNav | SetTheme;

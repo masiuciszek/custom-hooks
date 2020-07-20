@@ -3,6 +3,7 @@ import { GetServerSideProps, GetServerSidePropsContext, NextPage } from "next";
 import { ParsedUrlQuery } from "querystring";
 import Title from "../components/title";
 import { useSiteDispatch } from "../context/site.context/Site.context";
+import ThemeComp from "../components/themeEx";
 
 interface Props {
   data: NavLink[];
@@ -25,6 +26,7 @@ const IndexPage: NextPage<Props> = ({ data, done }) => {
         mainTitle="React Hooks"
         secondaryTitle="React hooks with Marcell"
       />
+      <ThemeComp />
     </>
   );
 };

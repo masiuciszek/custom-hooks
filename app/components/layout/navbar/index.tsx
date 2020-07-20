@@ -43,7 +43,8 @@ export default styled(Nav)`
   margin: 0;
   width: 100vw;
   height: 15rem;
-  background: transparent;
+  background: ${(props) => props.theme.colors.primary};
+  color: ${(props) => props.theme.colors.text};
   ${handleFlex("row", "space-between", "center")};
   font-size: 2rem;
   position: relative;

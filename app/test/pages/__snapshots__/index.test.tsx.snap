@@ -92,6 +92,32 @@ exports[`Home Page should Match Snapshot  1`] = `
           </span>
         </h3>
       </section>
+      <div>
+        <h3>
+          Choose theme
+        </h3>
+        <select
+          id=""
+          name=""
+        >
+          <option
+            disabled=""
+          >
+            choose theme
+          </option>
+          <option
+            selected=""
+            value="light"
+          >
+            light
+          </option>
+          <option
+            value="dark"
+          >
+            dark
+          </option>
+        </select>
+      </div>
     </main>
   </div>
   <footer
