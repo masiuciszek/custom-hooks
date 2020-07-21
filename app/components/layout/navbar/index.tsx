@@ -54,5 +54,6 @@ export default styled(Nav)`
     right: 2.5rem;
     cursor: pointer;
     font-size: 3rem;
+    z-index: 101;
   }
 `;

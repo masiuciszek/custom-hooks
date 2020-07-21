@@ -16,7 +16,7 @@ exports[`Home Page should match Snapshot  1`] = `
       class="NavStyles__NavListStyles-q0dme3-0 kVznwr"
     />
     <ul
-      class="NavStyles__NavListStyles-q0dme3-0 NavStyles__SmallListStyle-q0dme3-2 iyUche"
+      class="NavStyles__NavListStyles-q0dme3-0 NavStyles__SmallListStyle-q0dme3-2 bkjBKr"
       style="transform: translateY(-1000%);"
     >
       <li>
@@ -102,7 +102,7 @@ exports[`Home Page should match Snapshot  1`] = `
     </main>
   </div>
   <footer
-    class="footer-p4wu29-0 iDSFZH MainFooter"
+    class="footer-p4wu29-0 OtdOM MainFooter"
   >
     <div
       class="Texts__SecondaryTitle-sc-5d7d2m-0 elCLXM"

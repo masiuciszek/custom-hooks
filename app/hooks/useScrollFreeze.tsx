@@ -8,6 +8,7 @@ export default () => {
     // runs when component ore the hook is unmounted
     return () => {
       document.body.style.overflow = original;
+      document.body.style.overflow = "visible";
     };
   }, []);
 };

@@ -23,6 +23,6 @@ const Footer: React.FC<Props> = ({ className }) => {
 export default styled(Footer)`
   padding: 1rem 2rem;
   height: 15rem;
-  border: 2px solid red;
+  border: 2px solid ${(props) => props.theme.colors.text};
   ${handleFlex("row", "space-between", "center")};
 `;

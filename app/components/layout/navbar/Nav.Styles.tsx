@@ -57,8 +57,10 @@ export const SmallListStyle = styled(NavListStyles)`
   height: 100%;
   width: 100%;
   background: rgba(0, 0, 0, 0.6);
+  z-index: 100;
   ${handleFlex("column", "center", "center")};
   li {
+    padding: 2rem;
   }
   a {
     color: ${(props) => props.theme.colors.primary};
