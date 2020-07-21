@@ -12,7 +12,7 @@ const Counter: React.FC<Props> = () => {
         add
       </button>
       <button onClick={decrement} data-testid="dec">
-        dec
+        decq
       </button>
       <button onClick={reset} data-testid="reset">
         reset

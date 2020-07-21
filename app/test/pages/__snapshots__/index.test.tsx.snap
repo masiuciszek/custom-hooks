@@ -3,7 +3,7 @@
 exports[`Home Page should Match Snapshot  1`] = `
 <DocumentFragment>
   <nav
-    class="navbar-sc-8gcs5t-0 edATjb main-navbar"
+    class="navbar-sc-8gcs5t-0 dokJbT main-navbar"
   >
     <div
       class="Texts__SecondaryTitle-sc-5d7d2m-0 elCLXM"
@@ -13,16 +13,22 @@ exports[`Home Page should Match Snapshot  1`] = `
       </h4>
     </div>
     <ul
-      class="NavStyles__NavListStyles-q0dme3-0 hwCehv"
+      class="NavStyles__NavListStyles-q0dme3-0 kVznwr"
     >
-      <li>
+      <li
+        class="NavStyles__ListItem-q0dme3-1 bwqNHr"
+        style="font-size: 1.8rem;"
+      >
         <a
           href="/"
         >
           Home
         </a>
       </li>
-      <li>
+      <li
+        class="NavStyles__ListItem-q0dme3-1 bwqNHr"
+        style="font-size: 1.8rem;"
+      >
         <a
           href="/about"
         >
@@ -31,7 +37,7 @@ exports[`Home Page should Match Snapshot  1`] = `
       </li>
     </ul>
     <ul
-      class="NavStyles__NavListStyles-q0dme3-0 NavStyles__SmallListStyle-q0dme3-1 iqKrxM"
+      class="NavStyles__NavListStyles-q0dme3-0 NavStyles__SmallListStyle-q0dme3-2 iyUche"
       style="transform: translateY(-1000%);"
     >
       <li>

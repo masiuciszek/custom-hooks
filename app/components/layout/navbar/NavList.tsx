@@ -16,7 +16,7 @@ const NavList: React.FC<Props> = () => {
         navData.map((navItem) => (
           <ListItem
             key={navItem.text}
-            isPath={router.pathname === navItem.path}
+            isPath={router && router.pathname === navItem.path}
             style={{
               fontSize:
                 router && router.pathname === navItem.path ? "2rem" : "1.8rem",

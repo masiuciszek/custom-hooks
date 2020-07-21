@@ -14,7 +14,8 @@ const Card: React.FC<Props> = ({ imgUrl }) => {
   const options = {
     img: imgUrl || "img.jpg",
   };
-  console.log(bounds);
+
+  // console.log(bounds);
 
   return (
     <ImgCardWrapperStyles
@@ -23,7 +24,7 @@ const Card: React.FC<Props> = ({ imgUrl }) => {
       onMouseLeave={bind.onMouseLeave}
       style={{ padding: isHovered ? "3rem" : "0" }}
     >
-      <img src={options.img} alt="img-fight" />
+      <img data-testid="card-image" src={options.img} alt="img-fight" />
     </ImgCardWrapperStyles>
   );
 };

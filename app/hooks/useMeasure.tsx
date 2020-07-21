@@ -8,7 +8,9 @@ interface Bound {
   height: number;
 }
 
-const useMeasure = () => {
+type UseMeasureReturnType = [{ ref: React.MutableRefObject<undefined> }, Bound];
+
+const useMeasure = (): UseMeasureReturnType => {
   const ref = React.useRef();
 
   const [bounds, setBounds] = React.useState<Bound>({

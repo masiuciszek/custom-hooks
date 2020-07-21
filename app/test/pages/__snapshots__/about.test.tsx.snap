@@ -91,7 +91,7 @@ exports[`Home Page should match Snapshot  1`] = `
         <button
           data-testid="dec"
         >
-          dec
+          decq
         </button>
         <button
           data-testid="reset"
