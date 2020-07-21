@@ -1,7 +1,0 @@
-{
-  "dependencies": {
-    "@testing-library/react-hooks": "^3.3.0",
-    "axios": "^0.19.2",
-    "react-spring": "^8.0.27"
-  }
-}
