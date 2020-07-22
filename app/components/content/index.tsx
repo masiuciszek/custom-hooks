@@ -6,17 +6,17 @@ interface Props {
   lettersAmount?: number;
 }
 
-const Content: React.FC<Props> = ({ loremAmount, lettersAmount }) => {
+const Content: React.FC<Props> = ({ loremAmount = 0, lettersAmount = 2 }) => {
   const [loremText, setLoremText] = React.useState<Array<string>>([]);
   const [alphabet, setAlphabet] = React.useState<string[]>([]);
 
   const handleText = () => {
-    const xs = new Array(lettersAmount || 2)
+    const xs = new Array(lettersAmount)
       .fill(1)
       .map((_, index) => String.fromCharCode(65 + index));
     setAlphabet(xs);
 
-    const xss = new Array(loremAmount || 0).fill(
+    const xss = new Array(loremAmount).fill(
       "Lorem ipsum dolor, sit amet consectetur adipisicing elit. Nihil cupiditate eligendi eos impedit nisi laboriosam saepe obcaecati officia, repellendus commodi assumenda quod excepturi voluptatem aliquam deserunt autem qui, consectetur quaerat."
     );
 

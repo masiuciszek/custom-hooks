@@ -1,94 +1,484 @@
-<!-- AUTO-GENERATED-CONTENT:START (STARTER) -->
-<h1 align="center">
-  <img alt="Gatsby" src="resources/shopify+gatsby.png" height="60px" />
-  <br/>
-  Gatsby Shopify starter
-</h1>
+# Custom React hooks ⚛️λ🚀🍕
 
-[![Netlify Status](https://api.netlify.com/api/v1/badges/d374a159-9ee3-4b02-91a3-ee3053990fcb/deploy-status)](https://app.netlify.com/sites/gatsby-shopify-starter/deploys)
+This is application is a code example of how you can build your own custom hooks with React and reuse them in your applications.
+If there is any you like , just use them I am just glad they com ein handy! 😎😃🤗
 
-Kick off your next eCommerce experience with this Gatsby starter. It is based on the default Gatsby starter to be easily modifiable. [Demo](https://gatsby-shopify-starter.netlify.com)
+## Big Thanks to Scott Tolinski from Level Up Tutorials and Egghead.io for all knowledge
 
-This starter also includes credentials to a Shopify demo store so you can try it out immediately without having to start a store. To use your own just change the values inside of `.env`.
+### Tools dor this project 🛠🔧
 
-If you have questions feel free to message me on [Twitter](https://twitter.com/alexanderhorl) 🤙🏻
+* Next JS 💥
+* Typescript ʦ
+* Jest 🃏
+* React-testing-library 🐙
+* React-testing-library/hooks 🛠
 
-Checkout [nureineburg.netlify.app](https://nureineburg.netlify.app) for a real public shop built with this starter, the code is also [public](https://github.com/AlexanderProd/nureineburg.de/).  
+<hr/>
 
-## 💎 Features
+### useToggle hook 🔛👮‍♀️
 
-- Cart
-- Product grid
-- Product page
-- Dynamic Inventory Checking
-- Image optimization with Gatsby Image
-- Styled Components with Emotion
-- Google Analytics
-- SEO
+``` tsx
+import * as React from "react";
 
-### 📦 Dynamic Inventory Checking
-The Shopify product inventory is being checked in realtime, therefore no rebuilding and redeploy is needed when a product goes out of stock. This avoids problems where products could still be available even though they're out of stock due to redeploy delay.
+type ToggleReturnType = [boolean, () => void];
 
-### 🖌 Styling
-I'm using [Emotion](https://emotion.sh/docs/introduction) as styled components library, but the starter is purposely only sparsely styled so you don't have to remove unecessary code but can instead add your own styling immediately.
+export default (initialState = false): ToggleReturnType => {
+  const [state, setState] = React.useState<boolean>(initialState);
 
-## ⚠️ Common problems
+  const toggle = (): void => {
+    setState((prevState) => !prevState);
+  };
 
-- You need to use the Shopify Storefront API credentials not the regular Shopify API.
-- You need to have at least one published product on Shopify.
+  return [state, toggle];
+};
+```
 
-## 🚀 Quick start
+<hr/>
 
-1.  **Create a Gatsby site.**
+### UseCount hook ⏱
 
-    Use the Gatsby CLI to create a new site, specifying this starter.
+``` tsx
+import * as React from "react";
 
-    ```sh
-    # create a new Gatsby site using this starter
-    gatsby new my-shopify-store https://github.com/AlexanderProd/gatsby-shopify-starter
-    ```
+type CountReturnType = {
+  count: number;
+  increment: Fn;
+  decrement: Fn;
+  reset: Fn;
+};
 
-1.  **Start developing.**
+export default (
+  initialState = 0,
+  maxValue = 100,
+  minValue = 0
+): CountReturnType => {
+  const [count, setCount] = React.useState<number>(initialState);
 
-    Navigate into your new site’s directory and start it up.
+  const increment = (): void => {
+    setCount((prevState) =>
+      prevState >= maxValue ? prevState : prevState + 1
+    );
+  };
+  const decrement = (): void => {
+    setCount((prevState) => (prevState > minValue ? prevState - 1 : prevState));
+  };
+  const reset = (): void => {
+    setCount(0);
+  };
 
-    ```sh
-    cd my-shopify-store/
-    gatsby develop
-    ```
+  return { count, increment, decrement, reset };
+};
+```
 
-1.  **Open the source code and start editing!**
+<hr/>
 
-    Your site is now running at `http://localhost:8000`!
+### UseMount hooks 🪓⚛️
 
-    _Note: You'll also see a second link: _`http://localhost:8000/___graphql`_. This is a tool you can use to experiment with querying your data. Learn more about using this tool in the [Gatsby tutorial](https://www.gatsbyjs.org/tutorial/part-five/#introducing-graphiql)._
+``` tsx
+import { useEffect } from "react";
 
-    Open the `my-shopify-store` directory in your code editor of choice and edit `src/pages/index.js`. Save your changes and the browser will update in real time!
+type FnTypeHook = Fn | AnotherFN | SecondFn | ThirdFN;
 
-1. **Connect your own Shopify store.**
+export const useMount = (fn: FnTypeHook): void => {
+  useEffect(() => {
+    fn();
+  }, []);
+};
+export const useUnmount = (fn: FnTypeHook): void => {
+  useEffect(() => {
+    return () => {
+      fn();
+    };
+  });
+};
+```
 
-    Open both `.env` files located in the root directory of your page end replace the credentials with your own. Don't forget to restart Gatsby for your store to be loaded!
+<hr/>
 
-    ⚠️ Make sure to use the Shopify storefront API credentials, not the regular Shopify API!
+### useHoverHook 🐙
 
-## 🎓 Learning Gatsby
+In this example we are using the use toggle hook to toggle our **boolean**.
+So basically a hook withe help of another hook 💪🏻.
 
-Looking for more guidance? Full documentation for Gatsby lives [on the website](https://www.gatsbyjs.org/). Here are some places to start:
+``` tsx
+import * as React from "react";
+import useToggle from "./useToggle";
 
-- **For most developers, we recommend starting with our [in-depth tutorial for creating a site with Gatsby](https://www.gatsbyjs.org/tutorial/).** It starts with zero assumptions about your level of ability and walks through every step of the process.
+type ReturnHoveredHookType = [boolean, BindType];
 
-- **To dive straight into code samples, head [to our documentation](https://www.gatsbyjs.org/docs/).** In particular, check out the _Guides_, _API Reference_, and _Advanced Tutorials_ sections in the sidebar.
+export default (): ReturnHoveredHookType => {
+  // const [isHovered, setIsHovered] = React.useState(false);
+  const [isHovered, toggle] = useToggle();
+  const bind = React.useMemo(() => {
+    return {
+      onMouseOver: () => toggle(),
+      onMouseLeave: () => toggle(),
+    };
+  }, []);
 
-## Deploy
+  return [isHovered, bind];
+};
+```
 
-Checkout my other open-source project [JAMStackBox](https://github.com/AlexanderProd/jam-stack-box) to continuously deploy your Gatsby site on your own server.
+<hr/>
 
-## 📌 ToDo
+### useContext hooks both for state and your reducer 🦄
 
-I'll happily merge any pull request to improve the starter. 🙂
-- [X] Convert Layout to function component.
-- [X] Add dynamic inventory checking to avoid re-building after every purchase. 
-- [X] Add better styling.
-- [X] Add image optimization using Gatsby sharp plugin.
-- [X] Convert ProductForm to function component.
-<!-- AUTO-GENERATED-CONTENT:END -->
+This example can very, depending on how you prefer to structure your context API code.
+
+``` tsx
+export const useSiteState = () => {
+  const context = React.useContext(SiteStateContext);
+  if (context === undefined) {
+    throw new Error("useSiteState must be wrapped with in a provider");
+  }
+  return context;
+};
+
+export const useSiteDispatch = () => {
+  const context = React.useContext(SiteDispatchContext);
+  if (context === undefined) {
+    throw new Error("useSiteDispatch must be wrapped with in a provider");
+  }
+  return context;
+};
+```
+
+<br/>
+
+### useCookie hook 🍪
+
+``` tsx
+import * as React from "react";
+import Cookies from "js-cookie";
+
+type UseCookieReturnType = [
+  string,
+  React.Dispatch<React.SetStateAction<string>>
+];
+
+interface Key {
+  key: string;
+}
+
+export const useCookie = ({ key }: Key): UseCookieReturnType => {
+  const initialCookie = Cookies.get(key);
+  const [cookie, setStateCookie] = React.useState<string>(initialCookie);
+
+  React.useEffect(() => {
+    Cookies.set(key, cookie);
+  }, [cookie, key]);
+
+  return [cookie, setStateCookie];
+};
+```
+
+### useScrollFreeze hook 🥶
+
+useful when you want to prevent the user from scrolling the page, foe example when a modal is switched to true (open).
+
+``` tsx
+import * as React from "react";
+
+export default () => {
+  React.useLayoutEffect(() => {
+    const original = window.getComputedStyle(document.body).overflow;
+    document.body.style.overflow = "hidden";
+    // Cleanup
+    // runs when component ore the hook is unmounted
+    return () => {
+      document.body.style.overflow = original;
+    };
+  }, []);
+};
+```
+
+<br/>
+
+### useWindowWidth 🔥
+
+``` tsx
+import * as React from "react";
+
+const useWindowWidth = (): number => {
+  const [width, setWidth] = React.useState<number>(window.innerWidth);
+
+  React.useEffect(() => {
+    const handleResize = () => {
+      setWidth(window.innerWidth);
+    };
+    window.addEventListener("resize", handleResize);
+    // Cleanup Remove our event listener (unmunting)
+    return () => {
+      window.removeEventListener("resize", handleResize);
+    };
+  });
+
+  return width;
+};
+
+export default useWindowWidth;
+```
+
+<br />
+
+### useMeasure hook 🤗🐶
+
+Here I using a polyfill , what I actually recommend.
+ResizeObserver is still not fully supported in all browsers
+
+This hook is great for measure all different kind of a specific element.
+
+``` tsx
+import * as React from "react";
+import ResizeObserver from "resize-observer-polyfill";
+
+interface Bound {
+  left: number;
+  top: number;
+  width: number;
+  height: number;
+}
+
+const useMeasure = () => {
+  const ref = React.useRef();
+
+  const [bounds, setBounds] = React.useState<Bound>({
+    left: 0,
+    top: 0,
+    width: 0,
+    height: 0,
+  });
+
+  const [resizeX] = React.useState(() => {
+    return new ResizeObserver(([entry]) => setBounds(entry.contentRect));
+  });
+
+  React.useEffect(() => {
+    if (ref.current) {
+      resizeX.observe(ref.current);
+    }
+    return () => {
+      return resizeX.disconnect();
+    };
+  }, [resizeX]);
+
+  return [{ ref }, bounds];
+};
+
+export default useMeasure;
+```
+
+<br/>
+
+### useScript hook 𝒮👩🏻‍💻
+
+This hook i useful for when you want need to load a script into your project, for example a recaptcha from google's API
+
+``` tsx
+import * as React from "react";
+
+interface Status {
+  loaded: boolean;
+  error: boolean;
+}
+
+type UseScriptReturn = [boolean, boolean];
+
+const useScript = (src: string): UseScriptReturn => {
+  const cached = [];
+
+  const [status, setStatus] = React.useState<Status>({
+    loaded: false,
+    error: false,
+  });
+
+  React.useEffect(() => {
+    // if script already exits then ....
+    if (cached.includes(src)) {
+      setStatus({
+        loaded: true,
+        error: false,
+      });
+    } else {
+      cached.push(src);
+
+      const script = document.createElement("script");
+      script.src = src;
+      // for not blocking
+      script.async = true;
+
+      const onLoad = () => {
+        setStatus({
+          loaded: true,
+          error: false,
+        });
+      };
+
+      const onError = () => {
+        const srcIndex = cached.indexOf(src);
+        if (srcIndex >= 0) {
+          cached.splice(srcIndex, 1);
+        }
+
+        // destroy
+        script.remove();
+        setStatus({
+          loaded: true,
+          error: true,
+        });
+      };
+      script.addEventListener("load", onLoad);
+      script.addEventListener("error", onError);
+
+      document.body.appendChild(script);
+      return () => {
+        script.removeEventListener("load", onLoad);
+        script.removeEventListener("error", onError);
+      };
+    }
+  }, [src]);
+
+  return [status.loaded, status.error];
+};
+
+export default useScript;
+```
+
+<br/>
+
+### useKeyEvent hook ⚓️
+
+This hook really is a very handy hook when you working with keyboard inputs , really helped me a lot when i built a hangman game with react.
+
+``` tsx
+import * as React from "react";
+
+const useKeyEvent = () => {
+  const [letter, setLetter] = React.useState<string>("");
+
+  const handleKeyEvent = (event: KeyboardEvent) => {
+    if (event.keyCode >= 65 && event.keyCode <= 90) {
+      setLetter(event.key);
+    }
+  };
+
+  React.useEffect(() => {
+    window.addEventListener("keydown", handleKeyEvent);
+
+    return () => {
+      window.removeEventListener("keydown", handleKeyEvent);
+    };
+  });
+
+  return letter;
+};
+
+export default useKeyEvent;
+
+```
+
+<br/>
+
+### useKeyLetterCodes 👩🏻‍💻✍🏻
+
+This is hook is similar to the useKeyEvent hook but also returns the keycode end code
+
+``` tsx
+import * as React from "react";
+
+const useKeyLetterCodes = () => {
+  const [letter, setLetter] = React.useState<string>("");
+  const [keyCode, setKeyCode] = React.useState<number>(0);
+  const [code, setCode] = React.useState<string>("");
+
+  const handleKeyEvent = (event: KeyboardEvent) => {
+    if (event.keyCode >= 65 && event.keyCode <= 90) {
+      setLetter(event.key);
+      setKeyCode(event.keyCode);
+      setCode(event.code);
+    }
+  };
+
+  React.useEffect(() => {
+    window.addEventListener("keydown", handleKeyEvent);
+
+    return () => {
+      window.removeEventListener("keydown", handleKeyEvent);
+    };
+  });
+
+  return [letter, keyCode, code];
+};
+
+export default useKeyLetterCodes;
+
+```
+
+<br/>
+
+### useLocalStorage hook 🏬
+
+If you using server side rendered code with react for example Next Js , then it could be a good idea to start the hook with
+
+``` js
+  const item = typeof window === "object" ? window.localStorage.getItem(key) : null;
+```
+
+``` tsx
+import * as React from "react";
+
+function useLocalStorage(key: string, initialValue: string) {
+  const item =
+    typeof window === "object" ? window.localStorage.getItem(key) : null;
+  const [value, setValue] = React.useState<string>(item || initialValue);
+
+  React.useEffect(() => {
+    if (!item) {
+      setValue(initialValue);
+    }
+
+    window.localStorage.setItem(key, value);
+  }, [value, key]);
+
+  return [value, setValue];
+}
+
+export default useLocalStorage;
+
+```
+
+<br />
+
+### useTheme hook ⚓️🎨
+
+Also a good example where wu use another custom hook in another custom hook.
+
+``` tsx
+import * as React from "react";
+import useLocalStorage from "./useLocalStorage";
+
+type UseThemeReturnType = [
+  string,
+  React.Dispatch<React.SetStateAction<string>>
+];
+
+const useTheme = (
+  themeKey: string,
+  initialThemeValue: string
+): UseThemeReturnType => {
+  const [theme, setTheme] = useLocalStorage(themeKey, initialThemeValue);
+
+  React.useEffect(() => {
+    document.body.className = "";
+    document.body.classList.add(theme);
+    // If using redux or context API
+    // You could dispatch it to your initialState
+    // and handle it from there
+  }, [theme]);
+
+  return [theme, setTheme];
+};
+export default useTheme;
+
+```
