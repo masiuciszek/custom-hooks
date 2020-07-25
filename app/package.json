@@ -20,6 +20,7 @@
     ]
   },
   "dependencies": {
+    "element-resize-event": "^3.0.3",
     "js-cookie": "^2.2.1",
     "next": "^9.4.4",
     "react": "^16.13.1",

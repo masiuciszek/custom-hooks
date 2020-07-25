@@ -10,7 +10,11 @@ export const ImgCardWrapperStyles = styled.div`
   }
 `;
 
-export const SimpleWrapper = styled.div`
+interface SimpleWrapperProps {
+  row?: boolean;
+}
+
+export const SimpleWrapper = styled.div<SimpleWrapperProps>`
   ${handleFlex("column", "center", "center")};
   padding: 2rem 1rem;
   margin: 2rem auto;

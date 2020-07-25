@@ -1,4 +1,5 @@
 import { NextPage } from "next";
+import Boxes from "../components/box";
 import Counter from "../components/counter";
 import Title from "../components/title";
 
@@ -13,6 +14,7 @@ const AboutPage: NextPage<Props> = () => {
         secondaryTitle="React hooks with Marcell"
       />
       <Counter />
+      <Boxes boxAmount={10} />
     </>
   );
 };
