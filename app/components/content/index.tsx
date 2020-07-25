@@ -29,6 +29,7 @@ const Content: React.FC<Props> = ({ loremAmount = 0, lettersAmount = 2 }) => {
 
   return (
     <ContentStyles>
+      {lettersAmount && <h1 data-testid="alpha">Letters</h1>}
       {alphabet.map((alphabet) => (
         <h2 key={alphabet}>{alphabet}</h2>
       ))}
