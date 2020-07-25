@@ -12,5 +12,15 @@ describe("useToggle", () => {
     expect(typeof toggle.result.current[0]).toBe("boolean");
     expect(typeof toggle.result.current[1]).toBe("function");
     expect(toggle.result.current[0]).toBe(false);
+
+    act(() => {
+      // Fire the toggle function
+      const [on, fn] = toggle.result.current;
+      fn();
+    });
+
+    expect(typeof toggle.result.current[0]).toBe("boolean");
+    expect(typeof toggle.result.current[1]).toBe("function");
+    expect(toggle.result.current[0]).toBe(true);
   });
 });

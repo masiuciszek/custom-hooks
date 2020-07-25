@@ -11,5 +11,16 @@ describe("useCount", () => {
 
     expect(result.current.count).toBe(1);
     expect(typeof result.current.increment).toBe("function");
+
+    act(() => {
+      result.current.increment();
+    });
+
+    expect(result.current.count).toBe(2);
+
+    act(() => {
+      result.current.decrement();
+    });
+    expect(result.current.count).toBe(1);
   });
 });
