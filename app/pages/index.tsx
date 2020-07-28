@@ -5,6 +5,7 @@ import Title from "../components/title";
 import { useSiteDispatch } from "../context/site.context/Site.context";
 import ThemeComp from "../components/themeEx";
 import Content from "../components/content";
+import Btns from "../components/btns";
 
 interface Props {
   data: NavLink[];
@@ -28,7 +29,7 @@ const IndexPage: NextPage<Props> = ({ data, done }) => {
         secondaryTitle="React hooks with Marcell"
       />
       <ThemeComp />
-
+      <Btns />
       <Content loremAmount={60} />
     </>
   );

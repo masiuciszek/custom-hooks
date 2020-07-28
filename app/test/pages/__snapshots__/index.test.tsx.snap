@@ -125,6 +125,27 @@ exports[`Home Page should Match Snapshot  1`] = `
         </select>
       </div>
       <div
+        class="btns__BtnsWrapper-eapmru-0 inFeeS"
+      >
+        <h1
+          data-testid="btnsH1"
+        >
+          Light
+        </h1>
+        <button
+          class="Buttons__Btn-a69se8-1 cyCeBG"
+          data-testid="btn-light"
+        >
+          Light
+        </button>
+        <button
+          class="Buttons__Btn-a69se8-1 cyCeBG"
+          data-testid="btn-dark"
+        >
+          Dark
+        </button>
+      </div>
+      <div
         class="Contentstyles__ContentStyles-sc-1q4sdj3-0 EMcTb"
       >
         <h1
