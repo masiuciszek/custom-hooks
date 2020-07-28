@@ -1,9 +1,13 @@
 # Custom React hooks ⚛️λ🚀🍕
 
-This is application is a code example of how you can build your own custom hooks with React and reuse them in your applications.
-If there is any you like , just use them I am just glad they com ein handy! 😎😃🤗
+<div>
+  <img src="./hook.png"  alt="hook" width="300px" />
+</div>
 
-## Big Thanks to Scott Tolinski from Level Up Tutorials and Egghead.io for all knowledge
+This is application is a code example of how you can build your own custom hooks with React and reuse them in your applications.
+If there is any you like , just use them I am just glad they come in handy! 😎😃🤗
+
+## Big Thanks to Scott Tolinski from Level Up Tutorials and Egghead.io for all the knowledge and tips and tricks 🙌
 
 ### Tools dor this project 🛠🔧
 
@@ -524,5 +528,43 @@ const useSize = (defaultSize: Size): UseSizeReturnType => {
   return [size, wrappedRef];
 };
 export default useSize;
+
+```
+
+<br/>
+
+### useClickOutside hook λ🐳
+
+``` tsx
+import * as React from "react";
+
+type Handler = (event: MouseEvent | TouchEvent) => void;
+
+const useClickOutside = (
+  inputRef: React.MutableRefObject<HTMLElement>,
+  handler: Handler
+): void => {
+  React.useEffect(() => {
+    const listener = (event: MouseEvent | TouchEvent) => {
+      if (
+        !inputRef.current ||
+        inputRef.current.contains(event.target as Node)
+      ) {
+        return;
+      }
+
+      handler(event);
+    };
+    document.addEventListener("mousedown", listener);
+    document.addEventListener("touchstart", listener);
+
+    return () => {
+      document.removeEventListener("mousedown", listener);
+      document.removeEventListener("touchstart", listener);
+    };
+  }, [handler, inputRef]);
+};
+
+export { useClickOutside };
 
 ```
