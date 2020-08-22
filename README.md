@@ -11,17 +11,22 @@ If there is any you like , just use them I am just glad they come in handy! 😎
 
 ### Tools dor this project 🛠🔧
 
-* Next JS 💥
-* Typescript ʦ
-* Jest 🃏
-* React-testing-library 🐙
-* React-testing-library/hooks 🛠
+- Next JS 💥
+- Typescript ʦ
+- Jest 🃏
+- React-testing-library 🐙
+- React-testing-library/hooks 🛠
 
 <hr/>
 
-### useToggle hook 🔛👮‍♀️
+## Table of Contents
 
-``` tsx
+- [useToggle](#useToggle)
+- [usePrevious](#usePrevious)
+
+### useToggle <a name = "useToggle"></a> 🔛👮‍♀️
+
+```tsx
 import * as React from "react";
 
 type ToggleReturnType = [boolean, () => void];
@@ -41,7 +46,7 @@ export default (initialState = false): ToggleReturnType => {
 
 ### UseCount hook ⏱
 
-``` tsx
+```tsx
 import * as React from "react";
 
 type CountReturnType = {
@@ -54,13 +59,13 @@ type CountReturnType = {
 export default (
   initialState = 0,
   maxValue = 100,
-  minValue = 0
+  minValue = 0,
 ): CountReturnType => {
   const [count, setCount] = React.useState<number>(initialState);
 
   const increment = (): void => {
     setCount((prevState) =>
-      prevState >= maxValue ? prevState : prevState + 1
+      prevState >= maxValue ? prevState : prevState + 1,
     );
   };
   const decrement = (): void => {
@@ -78,7 +83,7 @@ export default (
 
 ### UseMount hooks 🪓⚛️
 
-``` tsx
+```tsx
 import { useEffect } from "react";
 
 type FnTypeHook = Fn | AnotherFN | SecondFn | ThirdFN;
@@ -104,7 +109,7 @@ export const useUnmount = (fn: FnTypeHook): void => {
 In this example we are using the use toggle hook to toggle our **boolean**.
 So basically a hook withe help of another hook 💪🏻.
 
-``` tsx
+```tsx
 import * as React from "react";
 import useToggle from "./useToggle";
 
@@ -130,7 +135,7 @@ export default (): ReturnHoveredHookType => {
 
 This example can very, depending on how you prefer to structure your context API code.
 
-``` tsx
+```tsx
 export const useSiteState = () => {
   const context = React.useContext(SiteStateContext);
   if (context === undefined) {
@@ -152,13 +157,13 @@ export const useSiteDispatch = () => {
 
 ### useCookie hook 🍪
 
-``` tsx
+```tsx
 import * as React from "react";
 import Cookies from "js-cookie";
 
 type UseCookieReturnType = [
   string,
-  React.Dispatch<React.SetStateAction<string>>
+  React.Dispatch<React.SetStateAction<string>>,
 ];
 
 interface Key {
@@ -181,7 +186,7 @@ export const useCookie = ({ key }: Key): UseCookieReturnType => {
 
 useful when you want to prevent the user from scrolling the page, foe example when a modal is switched to true (open).
 
-``` tsx
+```tsx
 import * as React from "react";
 
 export default () => {
@@ -201,7 +206,7 @@ export default () => {
 
 ### useWindowWidth 🔥
 
-``` tsx
+```tsx
 import * as React from "react";
 
 const useWindowWidth = (): number => {
@@ -233,7 +238,7 @@ ResizeObserver is still not fully supported in all browsers
 
 This hook is great for measure all different kind of a specific element.
 
-``` tsx
+```tsx
 import * as React from "react";
 import ResizeObserver from "resize-observer-polyfill";
 
@@ -279,7 +284,7 @@ export default useMeasure;
 
 This hook i useful for when you want need to load a script into your project, for example a recaptcha from google's API
 
-``` tsx
+```tsx
 import * as React from "react";
 
 interface Status {
@@ -355,7 +360,7 @@ export default useScript;
 
 This hook really is a very handy hook when you working with keyboard inputs , really helped me a lot when i built a hangman game with react.
 
-``` tsx
+```tsx
 import * as React from "react";
 
 const useKeyEvent = () => {
@@ -379,7 +384,6 @@ const useKeyEvent = () => {
 };
 
 export default useKeyEvent;
-
 ```
 
 <br/>
@@ -388,7 +392,7 @@ export default useKeyEvent;
 
 This is hook is similar to the useKeyEvent hook but also returns the keycode end code
 
-``` tsx
+```tsx
 import * as React from "react";
 
 const useKeyLetterCodes = () => {
@@ -416,7 +420,6 @@ const useKeyLetterCodes = () => {
 };
 
 export default useKeyLetterCodes;
-
 ```
 
 <br/>
@@ -425,11 +428,12 @@ export default useKeyLetterCodes;
 
 If you using server side rendered code with react for example Next Js , then it could be a good idea to start the hook with
 
-``` js
-  const item = typeof window === "object" ? window.localStorage.getItem(key) : null;
+```js
+const item =
+  typeof window === "object" ? window.localStorage.getItem(key) : null;
 ```
 
-``` tsx
+```tsx
 import * as React from "react";
 
 function useLocalStorage(key: string, initialValue: string) {
@@ -449,7 +453,6 @@ function useLocalStorage(key: string, initialValue: string) {
 }
 
 export default useLocalStorage;
-
 ```
 
 <br />
@@ -458,18 +461,18 @@ export default useLocalStorage;
 
 Also a good example where wu use another custom hook in another custom hook.
 
-``` tsx
+```tsx
 import * as React from "react";
 import useLocalStorage from "./useLocalStorage";
 
 type UseThemeReturnType = [
   string,
-  React.Dispatch<React.SetStateAction<string>>
+  React.Dispatch<React.SetStateAction<string>>,
 ];
 
 const useTheme = (
   themeKey: string,
-  initialThemeValue: string
+  initialThemeValue: string,
 ): UseThemeReturnType => {
   const [theme, setTheme] = useLocalStorage(themeKey, initialThemeValue);
 
@@ -484,16 +487,14 @@ const useTheme = (
   return [theme, setTheme];
 };
 export default useTheme;
-
 ```
 
 <br/>
 
 ### useSize hook ⚛️🧶
 
-``` tsx
-
-  import * as React from "react";
+```tsx
+import * as React from "react";
 import elementResizeEvent from "element-resize-event";
 
 interface Size {
@@ -528,21 +529,20 @@ const useSize = (defaultSize: Size): UseSizeReturnType => {
   return [size, wrappedRef];
 };
 export default useSize;
-
 ```
 
 <br/>
 
 ### useClickOutside hook λ🐳
 
-``` tsx
+```tsx
 import * as React from "react";
 
 type Handler = (event: MouseEvent | TouchEvent) => void;
 
 const useClickOutside = (
   inputRef: React.MutableRefObject<HTMLElement>,
-  handler: Handler
+  handler: Handler,
 ): void => {
   React.useEffect(() => {
     const listener = (event: MouseEvent | TouchEvent) => {
@@ -566,5 +566,21 @@ const useClickOutside = (
 };
 
 export { useClickOutside };
+```
 
+### usePrevious <a name = "usePrevious"></a>
+
+```tsx
+import * as React from "react";
+function usePrevious<T>(initialValue: T): React.MutableRefObject<T> {
+  const ref = React.useRef<T>();
+
+  React.useEffect(() => {
+    ref.current = initialValue;
+    // Only re-run if value changes
+  }, [initialValue]);
+  return ref;
+}
+
+export default usePrevious;
 ```
