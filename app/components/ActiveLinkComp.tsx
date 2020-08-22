@@ -1,7 +1,6 @@
 import * as React from "react";
 import Link from "next/link";
-import { useRouter } from "next/router";
-import { ActiveLink } from "./styled/Buttons";
+// import { useRouter } from "next/router";
 
 interface Props {
   href: string;
@@ -9,7 +8,7 @@ interface Props {
 }
 
 const ActiveLinkComp: React.FC<Props> = ({ href, text }) => {
-  const { pathname } = useRouter();
+  // const { pathname } = useRouter();
 
   return (
     <Link href={href}>

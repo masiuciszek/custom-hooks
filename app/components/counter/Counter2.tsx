@@ -8,8 +8,13 @@ const Counter2 = () => {
 
   return (
     <div>
-      <h2>Now {count}</h2>
-      <h2> before {previousCount && previousCount}</h2>
+      <h2>
+        Now <span data-testid="count">{count}</span>
+      </h2>
+      <h2>
+        {" "}
+        before <span data-testid="prevCount">{previousCount}</span>
+      </h2>
       <button onClick={() => setCount((prev) => prev + 1)}>Add</button>
       <button onClick={() => setCount((prev) => prev - 1)}>Sub</button>
     </div>
