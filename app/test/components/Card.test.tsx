@@ -1,23 +1,26 @@
 import * as React from "react";
-import { render, fireEvent, cleanup } from "@testing-library/react";
+import { render, screen, cleanup } from "@testing-library/react";
 import Layout from "../../components/layout";
 import SiteProvider from "../../context/site.context/Site.context";
 import Card from "../../components/card";
 
-afterEach(cleanup);
+const renderWithContext = (component) => {
+  return {
+    ...render(
+      <SiteProvider>
+        <Layout>{component}</Layout>
+      </SiteProvider>
+    ),
+  };
+};
 
+afterEach(cleanup);
 describe("<Card/>", () => {
   test("Card component", () => {
-    const card = render(
-      <SiteProvider>
-        <Layout>
-          <Card />
-        </Layout>
-      </SiteProvider>
-    );
+    const { findByTestId, container, debug } = renderWithContext(<Card />);
+    const img = findByTestId("card-image");
 
-    const img = card.findByTestId("card-image");
-    expect(card.container.firstChild).toBeDefined();
     expect(img).toBeDefined();
+    expect(container.firstChild).toBeDefined();
   });
 });

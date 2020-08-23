@@ -13,7 +13,6 @@
     "test": "jest",
     "test-all": "jest --watch"
   },
-
   "lint-staged": {
     "*.@(ts|tsx)": [
       "yarn lint",

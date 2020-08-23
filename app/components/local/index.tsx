@@ -10,11 +10,12 @@ const Local: React.FC<Props> = () => {
 
   return (
     <>
-      <h1>{value || ""}</h1>
+      <h1 data-testid="local-h1">{value || ""}</h1>
       <InputEl
         type="text"
         // value={typeof value === "string" ? value : ""}
         value={value}
+        data-testid="local-input"
         onChange={(e: React.ChangeEvent<HTMLInputElement>) =>
           setValue(e.target.value)
         }
