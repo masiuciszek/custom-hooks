@@ -1,4 +1,5 @@
 import * as React from "react";
+
 function usePrevious<T>(initialValue: T): T {
   const ref = React.useRef<T>();
 

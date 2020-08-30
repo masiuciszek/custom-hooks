@@ -13,6 +13,12 @@
     "test": "jest",
     "test-all": "jest --watch"
   },
+  "husky": {
+    "hooks": {
+      "pre-commit": "lint-staged",
+      "pre-push": "yarn run type-check"
+    }
+  },
   "lint-staged": {
     "*.@(ts|tsx)": [
       "yarn lint",
